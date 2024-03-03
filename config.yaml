@@ -1,0 +1,15 @@
+INDEED_URL: "https://www.indeed.com"
+user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+isHeadless: false
+
+input_fields:
+  keyword:
+    selector: "#text-input-what"
+    data: "Python Developer"
+  location:
+    selector: "#text-input-where"
+    data: "montreal"
+
+button_fields:
+  submit_button:
+    selector: "#jobsearch > div > div.css-169igj0.eu4oa1w0 > button"
