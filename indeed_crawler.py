@@ -1,3 +1,4 @@
+import os
 import yaml
 import time
 from playwright.sync_api import sync_playwright
@@ -18,7 +19,13 @@ class IndeedScraper:
         with sync_playwright() as p:
             browser, page = self.setup_crawler(p)
 
-            time.sleep(2)
+            time.sleep(1)
+
+            self.scroll_to_bottom_smooth(page)
+
+            time.sleep(1)
+
+            self.store_page_as_html(page, "page.html")
 
             browser.close()
 
@@ -36,6 +43,8 @@ class IndeedScraper:
 
 
         self.setup_scraper_controller(page)
+
+        time.sleep(1)
 
 
         self.enter_data()
@@ -70,6 +79,19 @@ class IndeedScraper:
             self.controller.click(selector)
         else:
             print("Selector not found for submit button in config.yaml")
+
+    def scroll_to_bottom_smooth(self, page):
+        page.evaluate('(async () => { await new Promise(resolve => { let totalHeight = 0; let distance = 100; let timer = setInterval(() => { let scrollHeight = document.body.scrollHeight; window.scrollBy(0, distance); totalHeight += distance; if(totalHeight >= scrollHeight){ clearInterval(timer); resolve(); } }, 50); }); })()')
+
+    def store_page_as_html(self, page, file_name):
+        # Get the current HTML content of the page
+        html_content = page.content()
+        # Define the path to store the HTML file
+        file_path = os.path.join("html", file_name)
+        # Write the HTML content to the file
+        with open(file_path, "w", encoding="utf-8") as file:
+            file.write(html_content)
+        print(f"Page HTML stored as {file_path}")
 
 if __name__ == "__main__":
     config_path = "config.yaml"
