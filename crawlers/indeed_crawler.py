@@ -28,36 +28,30 @@ class IndeedScraper:
         with sync_playwright() as p:
             browser, page = self.setup_crawler(p)
 
-            time.sleep(1)
-
 
             for page_idx in range(1, self.depth):
-                self.scroll_and_check_element(page)
+                time.sleep(1)
+
+                if page_idx == 2:
+                    try:
+                        element = page.wait_for_selector("#mosaic-desktopserpjapopup > div.css-g6agtu.eu4oa1w0 > button > svg", timeout=3000)
+                        element.click()
+                    except TimeoutError:
+                        print("Element not found within the specified timeout. Continuing execution.")
+
+
+                self.scroll_to_element(page, 'pagination-page-next')
 
                 time.sleep(1)
                 self.store_page_as_html(page, f"page{page_idx}.html")
-                self.click_next_button()
+
+                self.click_next_button(page)
 
             browser.close()
 
 
-
-    def scroll_and_check_element(self, page):
-        start_time = time.time()
-        timeout = 5
-        while not self.is_element_visible(page, DISMISS_BUTTON):
-            if time.time() - start_time > timeout:
-                print("Element did not appear within the timeout period.")
-                break
-            time.sleep(0.5)
-
-        self.scroll_to_element(page, 'pagination-page-next')
-
     def is_element_visible(self, page, selector):
         return page.is_visible(selector)
-
-    def handle_popup(self, selector):
-        self.controller.click(selector)
 
 
     def setup_crawler(self, playwright):
@@ -102,13 +96,12 @@ class IndeedScraper:
         else:
             print("Selector not found for submit button in config.yaml")
 
-    def click_next_button(self):
-        selector = self.clickable_fields.get('next_button', {}).get('selector', '')
-        if selector:
-            print(f"Clicking on next button with selector '{selector}'")
-            self.controller.click(selector, custom_query="data-testid='myButton'")
-        else:
-            print("Selector not found for next button in config.yaml")
+    def click_next_button(self, page):
+        ul_element = page.query_selector("#jobsearch-JapanPage > div > div.css-hyhnne.e37uo190 > div > div.css-pprl14.eu4oa1w0 > nav > ul")
+        last_li_element = ul_element.query_selector_all("li")[-1]
+        last_li_element.click()
+
+
 
 
     def scroll_to_bottom_smooth(self, page):
