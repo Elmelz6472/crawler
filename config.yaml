@@ -17,3 +17,11 @@ button_fields:
     selector: "#jobsearch-JapanPage > div > div.css-hyhnne.e37uo190 > div > div.css-pprl14.eu4oa1w0 > nav > ul > li:nth-child(6) > a > svg"
   dismiss_button:
     selector: "#mosaic-desktopserpjapopup > div.css-g6agtu.eu4oa1w0 > button"
+
+
+scraper_config:
+  config_path: "config.yaml"
+
+parser_config:
+  html_folder: "html/"
+  output_json_file: "results/companies.json"
