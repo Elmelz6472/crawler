@@ -13,3 +13,7 @@ input_fields:
 button_fields:
   submit_button:
     selector: "#jobsearch > div > div.css-169igj0.eu4oa1w0 > button"
+  next_button:
+    selector: "#jobsearch-JapanPage > div > div.css-hyhnne.e37uo190 > div > div.css-pprl14.eu4oa1w0 > nav > ul > li:nth-child(6) > a > svg"
+  dismiss_button:
+    selector: "#mosaic-desktopserpjapopup > div.css-g6agtu.eu4oa1w0 > button"
