@@ -1,6 +1,7 @@
 INDEED_URL: "https://www.indeed.com"
 GOOGLE_URL: "https://www.google.com"
-user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+
 isHeadless: false
 
 input_fields:
@@ -26,3 +27,5 @@ scraper_config:
 parser_config:
   html_folder: "html/"
   output_json_file: "results/companies.json"
+  contact_filder: "contact_page/"
+  contact_us_file: "contact_page/contact_us.html"

@@ -1,39 +1,49 @@
 import threading
+import yaml
+import time
+import json
 from playwright.sync_api import sync_playwright
 
 
 GOOGLE_SELECTOR_INPUT = '#APjFqb'
-
+GOOGLE_SELECTOR_FIRST_LINK = '.LC20lb'
+MAX_TIMEOUT = 60_000
 class GoogleSearch:
-    def __init__(self, is_headless=True, user_agent=None, max_threads=2):
-        self.is_headless = is_headless
-        self.user_agent = user_agent
-        self.names = []
+    def __init__(self, config_path, max_threads=2):
+        with open(config_path, 'r') as file:
+            config = yaml.safe_load(file)
+        self.url = config['GOOGLE_URL']
+        self.is_headless = config['isHeadless']
+        self.user_agent = config['user_agent']
         self.max_threads = max_threads
+        self.names = []
         self.threads = []
+        self.controller = None
 
     def add_name(self, name):
         self.names.append(name)
 
     def search(self, names):
-        with sync_playwright() as p:
-            browser, page = self.setup_crawler(p)
-            for name in names:
-                page.fill(GOOGLE_SELECTOR_INPUT, name)  # Updated selector for search input
-                page.press(GOOGLE_SELECTOR_INPUT, "Enter")
-                page.wait_for_load_state("networkidle")
-                results = page.query_selector_all('.tF2Cxc')
-                for result in results[:5]:
-                    print(result.inner_text())
-            browser.close()
+            with sync_playwright() as p:
+                browser, page = self.setup_crawler(p)
+                for name in names:
+                    page.fill(GOOGLE_SELECTOR_INPUT, name)
+                    page.press(GOOGLE_SELECTOR_INPUT, "Enter")
+                    page.wait_for_load_state("networkidle")
+                    link = page.query_selector(GOOGLE_SELECTOR_FIRST_LINK)
+                    if link:
+                        link.click()
+                    else:
+                        print("No search results found")
+                browser.close()
 
     def setup_crawler(self, playwright):
         browser = playwright.chromium.launch(headless=self.is_headless)
         page = browser.new_page()
-        page.set_default_timeout(60000)
+        page.set_default_timeout(MAX_TIMEOUT)
         if self.user_agent:
             page.set_extra_http_headers({"User-Agent": self.user_agent})
-        page.goto("https://www.google.com")
+        page.goto(self.url)
         return browser, page
 
     def start_searches(self):
@@ -46,15 +56,51 @@ class GoogleSearch:
         for thread in self.threads:
             thread.join()
 
-if __name__ == "__main__":
-    # Create an instance of GoogleSearch with non-headless mode and custom user agent
-    google_search = GoogleSearch(is_headless=False, user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36", max_threads=2)
 
-    # Add names to search
-    google_search.add_name("John Doe")
-    google_search.add_name("Jane Doe")
-    google_search.add_name("Alice Smith")
-    google_search.add_name("Bob Johnson")
+
+class JSONFileReader:
+    def __init__(self, filename):
+        self.filename = filename
+
+    def read_names(self):
+        with open(self.filename, 'r') as file:
+            data = json.load(file)
+            names = [entry["name"] for entry in data]
+            return names
+
+    def get_number_of_entries(self):
+        with open(self.filename, 'r') as file:
+            data = json.load(file)
+            return len(data)
+
+    def calculate_percentage(self, percentage):
+        total_entries = self.get_number_of_entries()
+        return int(percentage * total_entries / 100)
+
+    def __len__(self):
+        return self.get_number_of_entries()
+
+
+
+
+if __name__ == "__main__":
+    """max_thread is basically a divisor
+    4 names with 1 max_thread ->  4 concurrent instances of chrome
+    4 names with 4 max_thread -> 1 concurrent instance of chrome
+    """
+    config_path = "config.yaml"
+    filename = "results/companies.json"
+
+    json_reader = JSONFileReader(filename)
+    names = json_reader.read_names()
+
+
+    google_search = GoogleSearch(config_path, max_threads=json_reader.calculate_percentage(50))
+
+
+    for name in names:
+        google_search.add_name(name)
+
 
     # Start the searches
     google_search.start_searches()

@@ -1,55 +1,5 @@
 [
     {
-        "id": 0,
-        "name": "Cloudvital Technologies",
-        "location": "Hybrid remote in Montréal, QC"
-    },
-    {
-        "id": 1,
-        "name": "Infocodec Solutions",
-        "location": "Montréal, QC"
-    },
-    {
-        "id": 2,
-        "name": "Neptronic",
-        "location": "Saint-Laurent, QC"
-    },
-    {
-        "id": 3,
-        "name": "Kool Replay",
-        "location": "Remote in Montréal, QC"
-    },
-    {
-        "id": 4,
-        "name": "epsilonsolutions",
-        "location": "Montréal, QC"
-    },
-    {
-        "id": 5,
-        "name": "Power Factors",
-        "location": "Remote in Brossard, QC"
-    },
-    {
-        "id": 6,
-        "name": "NASDAQ",
-        "location": "Montréal, QC"
-    },
-    {
-        "id": 7,
-        "name": "Wireframesolutions",
-        "location": "Hybrid remote in Montréal, QC"
-    },
-    {
-        "id": 8,
-        "name": "NASDAQ",
-        "location": "Montréal, QC"
-    },
-    {
-        "id": 9,
-        "name": "Croesus",
-        "location": "Hybrid remote in Laval, QC"
-    },
-    {
         "id": 10,
         "name": "DRW",
         "location": "Remote in Montréal, QC"
