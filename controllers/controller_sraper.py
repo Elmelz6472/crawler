@@ -32,3 +32,6 @@ class ScraperController:
             print(f"Element with selector '{selector}' not found")
             return
         element.click()
+
+    def enter(self):
+        self.page.keyboard.press('Enter')
