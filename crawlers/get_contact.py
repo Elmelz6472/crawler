@@ -1,3 +1,4 @@
+import time
 import os
 import re
 from playwright.sync_api import sync_playwright
@@ -11,6 +12,9 @@ class PageNavigator:
             browser = p.chromium.launch(headless=False)
             page = browser.new_page()
             try:
+                # Dismiss any dialog boxes (popups)
+                page.on('dialog', lambda dialog: dialog.dismiss())
+
                 page.goto(url)
                 page.wait_for_load_state("networkidle")
 
@@ -24,25 +28,20 @@ class PageNavigator:
                     # If "Contact Us" link not found, perform a broader search
                     print("Contact Us link not found. Performing broader search...")
 
-                    # Look for links whose text element matches "Contact Us" or similar using regex
-                    contact_us_regex = re.compile(r"contact\s*us", re.IGNORECASE)
-                    about_us_regex = re.compile(r"about\s*us", re.IGNORECASE)
+                    # Look for links whose text element contains words related to "contact" or "about" using regex
+                    contact_or_about_regex = re.compile(r"(contact|about|joindre|a propos|nous contacter)", re.IGNORECASE)
 
                     links = page.query_selector_all('a')
                     for link in links:
                         text = link.inner_text()
-                        if contact_us_regex.search(text):
+                        if contact_or_about_regex.search(text):
                             link.click()
                             page.wait_for_load_state("networkidle")
-                            print("Navigated to Contact Us page.")
-                            break
-                        elif about_us_regex.search(text):
-                            link.click()
-                            page.wait_for_load_state("networkidle")
-                            print("Navigated to About Us page.")
+                            print(f"Navigated to {text} page.")
+                            time.sleep(5)
                             break
                     else:
-                        # If neither "Contact Us" nor "About Us" link found, print a message
+                        # If no related link found, print a message
                         print("No specific link found on the homepage. Try another approach or check other pages...")
                         return
 
@@ -65,7 +64,7 @@ class PageNavigator:
             file.write(page.content())
 
 if __name__ == "__main__":
-    website_url = "https://www.infowaygroup.com/"  # Replace with the actual website URL
+    website_url = "https://aeromag.ca/"  # Replace with the actual website URL
     folder_path = "contact_page"  # Specify the folder path to save the pages
     navigator = PageNavigator(folder_path)
     navigator.navigate_to_about_or_contact_page(website_url, "contact_us.html")
