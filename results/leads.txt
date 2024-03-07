@@ -1,33 +1,270 @@
-Name: Continent8
-URL: https://www.continent8.com/contact/
+Name: La Compagnie Commonwealth Plywood
+URL: https://www.commonwealthplywood.com/en/
 
-Name: Continent8
-URL: https://www.continent8.com/contact/
+Name: Hitachi Energy
+URL: https://www.hitachienergy.com/ca/en/contact
 
-Name: Continent8
-URL: https://www.continent8.com/contact/
+Name: Deli-Porc Inc.
+URL: http://www.deliporc.com/fr
 
-Name: Continent8
-URL: https://www.continent8.com/contact/
+Name: Hayes Signalisation
+URL: https://www.facebook.com/Hayessignalisation/contact
 
-Name: Info Way Group
-URL: https://www.infowaygroup.com/contact-us.html
+Name: ALBI Mazda Mascouche
+URL: https://www.albimazda.com/contact
 
-Name: Ericsson
-URL: https://www.ericsson.com/en/contact
+Name: Alco VR
+URL: https://www.alcovr.com/contact/
 
-Name: Continent8
-URL: https://www.continent8.com/contact/
+Name: Synairtech (usine de fabrication)
+URL: https://www.synairtech.ca/accueil
 
-Name: Info Way Group
-URL: https://www.infowaygroup.com/contact-us.html
+Name: Les Portes Bourassa
+URL: https://www.portesbourassa.com/fr
 
-Name: Cloudvital Technologies
-URL: https://cloudvital.ca/contact
+Name: DLC Teams
+URL: https://dlcteams.com/contact/
 
-Name: Fivesky
-URL: https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFEkxATkCLwfgAAAY4XOrBQAR1RLYaOJJKMGoKzTjYO741CRKwv8ZVEemg44yPxEnYiG4Mtyj_AH6OeqSlczMsPtfzvsdFwKsTFXbT_jf9QPoZw9K4vo8xLij_IZnuE-gtqfuw=&original_referer=&sessionRedirect=https%3A%2F%2Fca.linkedin.com%2Fcompany%2Ffivesky%2Fcontact
+Name: Services Ricova Inc.
+URL: https://ricova.com/en/ricova-divisions/waste-management/services-ricova/
 
-Name: GHGSat
-URL: https://www.ghgsat.com/en/contact/
+Name: GAB-Induspac
+URL: https://www.induspac.ca/en/contact
+
+Name: Exceldor
+URL: https://www.exceldorcooperative.ca/en/contact
+
+Name: Fabexp / Peinture Rive-Sud
+URL: https://fabexp.ca/contact
+
+Name: Cargill French Canadian
+URL: https://www.cargill.ca/fr_CA/accueil/contact
+
+Name: Soremag
+URL: https://soremag.com/contact/
+
+Name: LISI AÉRONAUTIQUE CANADA
+URL: https://www.lisi-aerospace.com/fr/contact/
+
+Name: Le Groupe Jalicika Inc.
+URL: https://www.quebecentreprises.com/le-groupe-jalicika-inc-newh/contact
+
+Name: Deli-Porc Inc.
+URL: http://www.deliporc.com/fr
+
+Name: Groupe immobilier Celico
+URL: https://immcelico.com/
+
+Name: O-I
+URL: https://www.o-i.com/contact
+
+Name: ALBI Kia Mascouche
+URL: https://www.albikia.com/eng/contact
+
+Name: Le groupe Honco
+URL: https://groupehonco.com/contact/
+
+Name: GAB-Induspac
+URL: https://www.induspac.ca/en/contact
+
+Name: Verrerie Walker Ltée
+URL: https://www.walkerglass.com/fr/
+
+Name: LABPLAS INC.
+URL: https://labplas.com/en_CA/contact.html
+
+Name: Haleon
+URL: https://www.haleon.com/contact
+
+Name: Plastiques Milsi
+URL: https://www.plastiquesmilsi.com/en/contact
+
+Name: Les Portes Bourassa
+URL: https://www.portesbourassa.com/fr
+
+Name: ALBI Kia Mascouche
+URL: https://www.albikia.com/eng/contact
+
+Name: Uniqlo Canada
+URL: https://www.uniqlo.com/ca/en/
+
+Name: Demix Agrégats – Une société CRH
+URL: https://demixagregats.ca/
+
+Name: Prolifik inc.
+URL: https://prolifikinc.com/en/
+
+Name: Le Groupe Jalicika Inc.
+URL: https://www.quebecentreprises.com/le-groupe-jalicika-inc-newh/contact
+
+Name: Nestle Operational Services Worldwide SA
+URL: https://www.dnb.com/business-directory/company-profiles.nestl%C3%A9_operational_services_worldwide_sa.a8d14cfa36078dcd938a751b05603fbd.html/contact
+
+Name: Pure Plomberie
+URL: https://pureplomberie.com/en/
+
+Name: Les Portes Bourassa
+URL: https://www.portesbourassa.com/fr
+
+Name: FleuriTerre Inc.
+URL: https://www.facebook.com/contact
+
+Name: Fuze HR Solutions Inc
+URL: https://fuzehr.com/contact/
+
+Name: LABPLAS INC.
+URL: https://labplas.com/en_CA/contact.html
+
+Name: Le Groupe Jalicika Inc.
+URL: http://www.quebecentreprises.com/le-groupe-jalicika-inc-newh/contact
+
+Name: Fuze HR Solutions Inc
+URL: https://fuzehr.com/contact/
+
+Name: Ville de Varennes
+URL: https://www.ville.varennes.qc.ca/
+
+Name: LABPLAS INC.
+URL: https://labplas.com/en_CA/contact.html
+
+Name: LES AMÉNAGEMENTS PAYSAGÉS SOL VERT
+URL: https://www.solvert.ca/contact/
+
+Name: Demix Agrégats – Une société CRH
+URL: https://demixagregats.ca/
+
+Name: Fibres Jasztex inc.
+URL: https://jasztex.com/contact/
+
+Name: FleuriTerre Inc.
+URL: https://www.facebook.com/contact
+
+Name: ALBI Mazda Mascouche
+URL: https://www.albimazda.com/contact
+
+Name: Demix Agrégats – Une société CRH
+URL: https://demixagregats.ca/
+
+Name: ArcelorMittal
+URL: https://corporate.arcelormittal.com/contact
+
+Name: Cargill French Canadian
+URL: https://www.cargill.ca/fr_CA/accueil/contact
+
+Name: FleuriTerre Inc.
+URL: https://www.facebook.com/contact
+
+Name: Expresco Foods
+URL: https://exprescofoods.com/contact/
+
+Name: Ville de Varennes
+URL: https://www.ville.varennes.qc.ca/
+
+Name: Lafarge Canada
+URL: https://www.lafarge.ca/en/contact
+
+Name: LES AMÉNAGEMENTS PAYSAGÉS SOL VERT
+URL: https://www.solvert.ca/contact/
+
+Name: Kik Consumer Products
+URL: https://www.kikcorp.com/wp-content/uploads/2019/09/contact.jpg
+
+Name: Ville de Varennes
+URL: https://www.ville.varennes.qc.ca/
+
+Name: Lafarge Canada
+URL: https://www.lafarge.ca/en/contact
+
+Name: ALBI Mazda Mascouche
+URL: https://www.albimazda.com/contact
+
+Name: Kruger Inc.
+URL: https://www.kruger.com/contact-us/
+
+Name: LES AMÉNAGEMENTS PAYSAGÉS SOL VERT
+URL: https://www.solvert.ca/contact/
+
+Name: Lafarge Canada
+URL: https://www.lafarge.ca/en/contact
+
+Name: Cargill French Canadian
+URL: https://www.cargill.ca/fr_CA/accueil/contact
+
+Name: Expresco Foods
+URL: https://exprescofoods.com/contact/
+
+Name: ALBI Mazda Mascouche
+URL: https://www.albimazda.com/contact
+
+Name: Lafarge Canada
+URL: https://www.lafarge.ca/en/contact
+
+Name: Altium Packaging
+URL: https://altiumpkg.com/contact-us/
+
+Name: WestRock Company of Canada
+URL: https://solutions.westrock.com/solutions
+
+Name: Cargill French Canadian
+URL: https://www.cargill.ca/fr_CA/accueil/contact
+
+Name: American Iron and Metal
+URL: https://aim-global.com/contact
+
+Name: Kraft Heinz Company
+URL: https://www.kraftheinzcompany.com/index.html
+
+Name: Kruger Inc.
+URL: https://www.kruger.com/contact-us/
+
+Name: American Iron and Metal
+URL: https://aim-global.com/contact
+
+Name: THERMOPLAST
+URL: https://thermoplast.com/
+
+Name: Artmetco inc
+URL: https://www.artmetco.com/contact-us/
+
+Name: American Iron and Metal
+URL: https://aim-global.com/contact
+
+Name: JTI - Japan Tobacco International
+URL: https://www.jti.com/contact
+
+Name: KABS
+URL: https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHt8PVe9ezZpQAAAY4XvveYtRZe0-BnS74jF6yc8vn-Afn66wz8TG5Uh6047A6S5PHK2NXUXNtgBqSJ5K9iq_m2X0AB17smE4Mk4oZxjMvjSpJPL4g3vUjU96L8qEoZfYdpJxA=&original_referer=&sessionRedirect=https%3A%2F%2Fca.linkedin.com%2Fcompany%2Fkabs-laboratories-inc-%2Fcontact
+
+Name: Altium Packaging Canada
+URL: https://altiumpkg.com/contact-us/
+
+Name: Glencore
+URL: https://www.glencore.com/contact
+
+Name: Kraft Heinz Company
+URL: https://www.kraftheinzcompany.com/index.html
+
+Name: L’École de Technologie Supérieure
+URL: https://www.etsmtl.ca/
+
+Name: C.H. Guenther & Son, Inc.
+URL: https://fs.chg.com/contact-us/
+
+Name: American Iron and Metal
+URL: https://aim-global.com/contact
+
+Name: Altium Packaging
+URL: https://altiumpkg.com/contact-us/
+
+Name: Kraft Heinz Company
+URL: https://www.kraftheinzcompany.com/index.html
+
+Name: Groupe Bellemare
+URL: https://www.groupebellemare.com/nous-joindre/
+
+Name: H Grégoire Carignan
+URL: https://www.hgregoire.com/contact-us
+
+Name: Artmetco inc
+URL: https://www.artmetco.com/contact-us/
 

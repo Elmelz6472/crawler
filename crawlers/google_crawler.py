@@ -2,7 +2,7 @@ import threading
 import yaml
 import time
 import json
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, Geolocation
 
 
 GOOGLE_SELECTOR_INPUT = '#APjFqb'
@@ -29,32 +29,41 @@ class GoogleSearch:
         for name in names:
             with sync_playwright() as p:
                 browser, page = self.setup_crawler(p)
-                page.fill(GOOGLE_SELECTOR_INPUT, name)
-                page.press(GOOGLE_SELECTOR_INPUT, "Enter")
-                page.wait_for_load_state("networkidle")
-                link = page.query_selector(GOOGLE_SELECTOR_FIRST_LINK)
-                if link:
-                    link.click()
-                    page.wait_for_load_state("networkidle")
-                    self.navigate_to_contact_page(page, name)
-                else:
-                    print("No search results found")
-                browser.close()
+                try:
+                    page.fill(GOOGLE_SELECTOR_INPUT, name)
+                    page.press(GOOGLE_SELECTOR_INPUT, "Enter")
+                    time.sleep(3)
+                    # page.wait_for_load_state("networkidle")
+                    link = page.query_selector(GOOGLE_SELECTOR_FIRST_LINK)
+                    if link:
+                        link.click()
+                        time.sleep(5)
+                        # page.wait_for_load_state("networkidle")
+                        self.navigate_to_contact_page(page, name)
+                    else:
+                        print("No search results found")
+                except TimeoutError as e:
+                    print(f"TimeoutError: {e}")
+                    continue
+                finally:
+                    browser.close()
+
 
 
 
     def navigate_to_contact_page(self, page, name):
         current_url = page.url
         old_url = current_url
+        flag = False
         if current_url.endswith('/'):
             current_url = current_url[:-1]  # Remove trailing slash
 
         variations = ["contact", "contact.html", "contact-us", "contact-us.html"]
-        flag
         for variation in variations:
             try:
                 page.goto(current_url + f"/{variation}")
-                page.wait_for_load_state('networkidle')
+                time.sleep(3)
+                # page.wait_for_load_state('networkidle')
 
                 # Check if the page contains 'error' or '404' in its text content
                 if 'error' in page.inner_text('*') or '404' in page.inner_text('*'):
@@ -83,7 +92,8 @@ class GoogleSearch:
     def setup_crawler(self, playwright):
         # browser = playwright.chromium.launch_persistent_context(user_data_dir=chrome_profile_directory, headless=self.is_headless)
         browser = playwright.chromium.launch(headless=self.is_headless)
-        page = browser.new_page()
+        context = browser.new_context(geolocation=None)
+        page = context.new_page()
         page.set_default_timeout(MAX_TIMEOUT)
         if self.user_agent:
             page.set_extra_http_headers({"User-Agent": self.user_agent})
@@ -143,7 +153,7 @@ if __name__ == "__main__":
     names = json_reader.read_names()
 
 
-    google_search = GoogleSearch(config_path, max_threads=json_reader.calculate_percentage(50))
+    google_search = GoogleSearch(config_path, max_threads=json_reader.calculate_percentage(10))
 
 
     for name in names:

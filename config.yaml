@@ -7,7 +7,7 @@ isHeadless: false
 input_fields:
   keyword:
     selector: "#text-input-what"
-    data: "Python Developer"
+    data: "travail general"
   location:
     selector: "#text-input-where"
     data: "montreal"

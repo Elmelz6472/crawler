@@ -2,7 +2,8 @@ import os
 import yaml
 import time
 import threading
-from playwright.sync_api import sync_playwright
+import playwright
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 #I DONT KNOW WHY IT WOKRS BUT IT WOKRS
 import sys
@@ -11,6 +12,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from controllers.controller_sraper import ScraperController
 
 DISMISS_BUTTON = "#mosaic-desktopserpjapopup > div.css-g6agtu.eu4oa1w0 > button"
+chrome_profile_directory = '/Users/malikmacbook/Library/Application Support/Google/Chrome/Profile 54'
+
 
 class IndeedScraper:
     def __init__(self, config_path, depth=5):
@@ -21,6 +24,7 @@ class IndeedScraper:
         self.isHeadless = config['isHeadless']
         self.input_fields = config.get('input_fields', {})
         self.clickable_fields = config.get('button_fields', {})
+        self.keyword = self.input_fields.get('keyword', {}).get('data')
         self.controller = None
         self.depth = depth
 
@@ -30,20 +34,18 @@ class IndeedScraper:
 
 
             for page_idx in range(1, self.depth):
-                time.sleep(1)
-
                 if page_idx == 2:
                     try:
                         element = page.wait_for_selector("#mosaic-desktopserpjapopup > div.css-g6agtu.eu4oa1w0 > button > svg", timeout=3000)
                         element.click()
-                    except TimeoutError:
+                    except PlaywrightTimeoutError:
                         print("Element not found within the specified timeout. Continuing execution.")
-
+                        continue
 
                 self.scroll_to_element(page, 'pagination-page-next')
 
-                time.sleep(1)
-                self.store_page_as_html(page, f"page{page_idx}.html")
+                time.sleep(0.25)
+                self.store_page_as_html(page, f"{self.keyword}{page_idx}.html")
 
                 self.click_next_button(page)
 
@@ -55,7 +57,9 @@ class IndeedScraper:
 
 
     def setup_crawler(self, playwright):
-        browser = playwright.chromium.launch(headless=self.isHeadless)
+        # browser = playwright.chromium.launch(headless=self.isHeadless)
+        browser = playwright.chromium.launch_persistent_context(user_data_dir=chrome_profile_directory, headless=self.isHeadless)
+
         page = browser.new_page()
         page.set_default_timeout(60000)
         page.set_extra_http_headers({"User-Agent": self.user_agent})
@@ -143,5 +147,5 @@ class IndeedScraper:
 
 if __name__ == "__main__":
     config_path = "config.yaml"
-    scraper = IndeedScraper(config_path)
+    scraper = IndeedScraper(config_path, depth=10)
     scraper.run()
